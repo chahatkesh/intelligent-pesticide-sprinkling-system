@@ -77,6 +77,18 @@ export default function Dashboard() {
         );
       }
 
+      const ard = lastMessage.arduino;
+      if (ard) {
+        if (ard.ok) {
+          toast.success(
+            `Sent ${ard.sent}% to Arduino${ard.ack ? ` (${ard.ack})` : ''}`,
+            { duration: 3000, icon: '📡' }
+          );
+        } else {
+          toast.error(`Arduino: ${ard.error}`, { duration: 6000 });
+        }
+      }
+
       fetchHistory();
       fetchStats();
     } else if (lastMessage.type === 'error') {

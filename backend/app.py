@@ -1,6 +1,7 @@
 import asyncio
 import base64
 import io
+import logging
 import os
 import uuid
 from contextlib import asynccontextmanager
@@ -12,6 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
 
 from backend.analyzer import get_image_from_esp32, analyze_leaf, check_esp32_connection
+from backend.arduino import controller as arduino
 from backend.database import (
     init_db,
     save_scan,
@@ -21,6 +23,9 @@ from backend.database import (
     update_setting,
 )
 from backend.config import CAPTURED_IMAGES_DIR
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("plant_monitor")
 
 os.makedirs(CAPTURED_IMAGES_DIR, exist_ok=True)
 
@@ -66,12 +71,28 @@ async def broadcast(message: dict):
 async def perform_scan():
     try:
         image = get_image_from_esp32()
+        logger.info("Captured image from ESP32-CAM (%dx%d)", *image.size)
+
         analysis = analyze_leaf(image)
+        logger.info("Gemini result: %s", analysis)
 
         infection_percent = analysis["infection_percent"]
         is_leaf = analysis["is_leaf"]
         plant_type = analysis["plant_type"]
         message = analysis["message"]
+        logger.info("Parsed infection percentage: %d%%", infection_percent)
+
+        # Send the value to the Arduino over USB serial (runs in a worker
+        # thread so blocking serial I/O never stalls the event loop).
+        arduino_result = await asyncio.to_thread(arduino.send_infection, infection_percent)
+        if arduino_result.get("ok"):
+            logger.info(
+                "Sent %d to Arduino on %s (ack: %s)",
+                arduino_result["sent"], arduino_result.get("port"),
+                arduino_result.get("ack"),
+            )
+        else:
+            logger.warning("Failed to send to Arduino: %s", arduino_result.get("error"))
 
         filename = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:6]}.jpg"
         filepath = os.path.join(CAPTURED_IMAGES_DIR, filename)
@@ -99,6 +120,7 @@ async def perform_scan():
             "message": message,
             "alert": alert,
             "threshold": threshold,
+            "arduino": arduino_result,
         }
 
         await broadcast(result)
