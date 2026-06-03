@@ -1,0 +1,133 @@
+% =============================================================
+%   PROJECT DIARY REPORT — END SEMESTER EVALUATION
+%   Minor Project (Phase-II), B.Tech 6th Semester
+%   Dr. B. R. Ambedkar National Institute of Technology Jalandhar
+%   Department of Instrumentation and Control Engineering
+% =============================================================
+\documentclass[12pt,a4paper,oneside]{report}
+
+% ─── Packages ────────────────────────────────────────────────
+\usepackage[margin=1in,top=1.2in,bottom=1.2in]{geometry}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{microtype}
+
+% ─── Line Spacing ────────────────────────────────────────────
+\onehalfspacing
+
+% ─── Header / Footer ─────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small Intelligent Pesticide Sprinkling System}
+\lhead{\small Project Diary Report}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ─── Custom Commands ─────────────────────────────────────────
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% A reusable weekly diary block: one row per heading, one line each.
+\newcommand{\diaryblock}[5]{%
+\renewcommand{\arraystretch}{1.5}%
+\noindent\begin{tabularx}{\textwidth}{|p{4.6cm}|X|}
+\hline
+\textbf{Objectives Planned} & #1 \\
+\hline
+\textbf{Work Executed During the Week} & #2 \\
+\hline
+\textbf{Discussion and Feedback from Supervisor} & #3 \\
+\hline
+\textbf{Issues and Challenges Identified} & #4 \\
+\hline
+\textbf{Action Plan for Next Week} & #5 \\
+\hline
+\end{tabularx}%
+}
+
+% =============================================================
+\begin{document}
+\pagestyle{empty}
+
+% ─── Title Block ─────────────────────────────────────────────
+\begin{center}
+\vspace*{0.4cm}
+{\large \textbf{PROJECT DIARY REPORT}}\\[0.2cm]
+{\normalsize END SEMESTER EVALUATION (PHASE -- II)}\\[0.5cm]
+\HRule\\[0.25cm]
+{\large \textbf{Intelligent Pesticide Sprinkling System\\
+Determined by the Infection Level of Plants}}\\[0.25cm]
+\HRule\\[0.6cm]
+\end{center}
+
+\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\textwidth}{p{4.2cm}X}
+\textbf{Submitted by} & Bhavesh Singh (23106030), Chahat Kesharwani (23106032), \\
+ & Sadgi Saraswat (23106078), Vanshika Soni (23106099) \\[0.2cm]
+\textbf{Supervisor} & Dr. Karan Veer, Assistant Professor, Dept. of ICE \\[0.2cm]
+\textbf{Total Duration} & 9 Weeks (Weeks 1--4 evaluated at Mid-Semester) \\[0.2cm]
+\textbf{Coverage of this Report} & Weeks 5--9 (Final 60\% of project work) \\
+\end{tabularx}
+
+\vspace{0.4cm}
+\noindent\textit{The first four weeks, presented during the mid-semester evaluation, covered the
+initial 40\% of the project, comprising literature study, dataset preparation, model
+finalisation, base circuit design, and preliminary subsystem testing. The remaining 60\% of the
+work, reported below, focuses on hardware enclosure assembly, integration of the pump/sprayer
+mechanism, completion of the web dashboard, end-to-end workflow testing, and final prototype
+readiness for demonstration.}
+
+\vspace{0.6cm}
+
+% =============================================================
+%  WEEK 5 & 6
+% =============================================================
+\noindent\textbf{\large Week 5 \& Week 6 (Combined)}
+\vspace{0.2cm}
+
+\diaryblock
+{To assemble all hardware components inside a compact enclosure and integrate the sprayer mechanism with the control system.}
+{Mounted and wired the components within the enclosure and integrated the sprayer mechanism, verifying spraying response against infection severity.}
+{The supervisor appreciated the neat enclosure layout and advised proper wire management and severity-based calibration.}
+{Loose connections caused intermittent operation and the nozzle initially produced an uneven spray pattern.}
+{To complete the web dashboard and begin integrated testing of the full image-capture-to-spraying workflow.}
+
+\vspace{0.8cm}
+
+% =============================================================
+%  WEEK 7, 8 & 9
+% =============================================================
+\noindent\textbf{\large Week 7, Week 8 \& Week 9 (Combined)}
+\vspace{0.2cm}
+
+\diaryblock
+{To complete the web dashboard and prepare a tested final prototype for demonstration and evaluation.}
+{Completed the web dashboard and integrated the full image-capture-to-severity-based-spraying workflow, tested on healthy and infected leaf samples.}
+{The supervisor confirmed the workflow met the objectives and recommended minor UI refinements and additional test runs.}
+{Varying lighting affected severity consistency and dashboard readings needed synchronisation with the spraying action.}
+{To carry out final calibration, documentation, and demonstration of the completed prototype for the end-semester evaluation.}
+
+\vspace{0.8cm}
+
+\noindent\textbf{Summary:} By the end of Week 9, the prototype was fully assembled within a compact
+hardware enclosure, the sprayer mechanism was integrated with the control system, the web dashboard
+was operational, and the complete image-capture-to-spraying workflow was tested and ready for
+demonstration --- completing the remaining 60\% of the project beyond the 40\% achieved at the
+mid-semester stage.
+
+\vspace{1.2cm}
+\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\textwidth}{p{0.45\textwidth}X}
+\rule{5cm}{0.4pt} & \hfill\rule{5cm}{0.4pt} \\
+Signature of Students & \hfill Signature of Supervisor \\
+ & \hfill Dr. Karan Veer \\
+\end{tabularx}
+
+\end{document}

@@ -1,0 +1,1245 @@
+% =============================================================
+%   MINOR PROJECT REPORT — B.Tech (Phase-II, 6th Semester)
+%   Dr. B. R. Ambedkar National Institute of Technology Jalandhar
+%   Department of Instrumentation and Control Engineering
+% =============================================================
+\documentclass[12pt,a4paper,oneside]{report}
+
+% ─── Packages ────────────────────────────────────────────────
+\usepackage[margin=1in,top=1.2in,bottom=1.2in]{geometry}
+\usepackage{times}          % Times New Roman style
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tocloft}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{mdframed}
+\usepackage{tabularx}
+\usepackage{pifont}
+
+% ─── Hyperref Setup ──────────────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+    pdftitle={Intelligent Pesticide Sprinkling System},
+    pdfauthor={Bhavesh Singh, Chahat Kesharwani, Sadgi Saraswat, Vanshika Soni},
+}
+
+% ─── Line Spacing ────────────────────────────────────────────
+\onehalfspacing
+
+% ─── Header / Footer ─────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small Intelligent Pesticide Sprinkling System}
+\lhead{\small Minor Project Report}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ─── Chapter / Section Formatting ────────────────────────────
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries\centering}
+  {\chaptertitlename\ \thechapter}{12pt}{\Large}
+\titlespacing*{\chapter}{0pt}{10pt}{20pt}
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\itshape}{\thesubsubsection}{1em}{}
+
+% ─── Code Listing Style ──────────────────────────────────────
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\color{orange!80!black},
+  frame=single,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  captionpos=b
+}
+
+% ─── Custom Commands ─────────────────────────────────────────
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\keyword}[1]{\textbf{#1}}
+
+% ─────────────────────────────────────────────────────────────
+\begin{document}
+
+% ─── Plain style for front matter ────────────────────────────
+\pagestyle{empty}
+
+% =============================================================
+%  TITLE PAGE
+% =============================================================
+\begin{titlepage}
+\begin{center}
+
+\vspace*{0.5cm}
+{\large \textbf{MINOR PROJECT REPORT (PHASE -- II)}}\\[0.3cm]
+{\normalsize B.Tech 6\textsuperscript{th} Semester}\\[0.6cm]
+\HRule\\[0.3cm]
+{\LARGE \textbf{Intelligent Pesticide Sprinkling System\\
+Determined by the Infection Level of Plants}}\\[0.3cm]
+\HRule\\[0.8cm]
+
+\textit{Submitted by}\\[0.3cm]
+\begin{tabular}{ll}
+\textbf{Bhavesh Singh}      & (23106030) \\
+\textbf{Chahat Kesharwani}  & (23106032) \\
+\textbf{Sadgi Saraswat}     & (23106078) \\
+\textbf{Vanshika Soni}      & (23106099) \\
+\end{tabular}\\[0.8cm]
+
+\textit{Under the Supervision of}\\[0.3cm]
+{\large \textbf{Dr. Karan Veer}}\\
+\textit{Assistant Professor}\\
+\textit{Department of Instrumentation and Control Engineering}\\[1.0cm]
+
+% Institute Logo placeholder
+\includegraphics[width=0.2\linewidth]{logo_250.png}\\[0.6cm]
+
+
+{\large \textbf{Department of Instrumentation and Control Engineering}}\\
+{\large \textbf{Dr. B. R. Ambedkar National Institute of Technology Jalandhar}}\\
+Jalandhar, Punjab -- 144008\\[0.3cm]
+{\normalsize \textit{Academic Year 2025--2026}}
+
+\end{center}
+\end{titlepage}
+
+% ─── Roman page numbering begins after title page ─────────────
+\pagenumbering{roman}
+\setcounter{page}{1}
+\pagestyle{plain}
+
+% =============================================================
+%  CERTIFICATE PAGE
+% =============================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{CERTIFICATE}
+\begin{center}
+{\Large \textbf{CERTIFICATE}}
+\end{center}
+\vspace{1cm}
+
+\noindent This is to certify that the minor project entitled \textbf{``Intelligent Pesticide Sprinkling System Determined by the Infection Level of Plants''} has been carried out by:
+
+\vspace{0.5cm}
+\begin{center}
+\begin{tabular}{ll}
+Bhavesh Singh      & (23106030) \\
+Chahat Kesharwani  & (23106032) \\
+Sadgi Saraswat     & (23106078) \\
+Vanshika Soni      & (23106099) \\
+\end{tabular}
+\end{center}
+\vspace{0.5cm}
+
+\noindent under my supervision and guidance in partial fulfilment of the requirements for the degree of Bachelor of Technology in Instrumentation and Control Engineering at Dr. B. R. Ambedkar National Institute of Technology Jalandhar during the academic year 2025--2026.
+
+\noindent To the best of my knowledge and belief, the work is original, has not been submitted to any other institution, and has not been published earlier.
+
+\vspace{2.5cm}
+\noindent
+\begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
+\textbf{Project Supervisor} & \textbf{Project Coordinator (PRC)} \\[1.5cm]
+\rule{5cm}{0.4pt} & \rule{5cm}{0.4pt} \\
+Dr. Karan Veer & \\
+Assistant Professor & \\
+Dept. of ICE, NIT Jalandhar & \\
+\end{tabular}
+
+\vspace{1.5cm}
+\noindent
+\begin{tabular}{p{0.45\textwidth}}
+\textbf{Head of Department} \\[1.5cm]
+\rule{5cm}{0.4pt} \\
+Dept. of ICE, NIT Jalandhar \\
+\end{tabular}
+
+% =============================================================
+%  DECLARATION
+% =============================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{DECLARATION}
+\begin{center}
+{\Large \textbf{DECLARATION}}
+\end{center}
+\vspace{0.8cm}
+
+\noindent We hereby declare that the minor project work entitled \textbf{``Intelligent Pesticide Sprinkling System Determined by the Infection Level of Plants''} submitted to the Department of Instrumentation and Control Engineering, Dr. B. R. Ambedkar National Institute of Technology Jalandhar, is a record of our original work carried out during the 6\textsuperscript{th} semester of the B.Tech programme.
+
+\noindent The information and data given in the report are authentic to the best of our knowledge. This report has not been submitted to any other university or institution for the award of any degree, diploma, or any other qualification.
+
+\vspace{2.5cm}
+\noindent\textbf{Signatures of the Candidates:}
+
+\vspace{1.5cm}
+\noindent
+\begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
+\rule{5cm}{0.4pt} & \rule{5cm}{0.4pt} \\
+Bhavesh Singh (23106030) & Chahat Kesharwani (23106032) \\[1.5cm]
+\rule{5cm}{0.4pt} & \rule{5cm}{0.4pt} \\
+Sadgi Saraswat (23106078) & Vanshika Soni (23106099) \\
+\end{tabular}
+
+\vspace{1cm}
+\noindent Place: NIT Jalandhar \hfill Date: \underline{\hspace{3cm}}
+
+% =============================================================
+%  ACKNOWLEDGEMENT
+% =============================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENT}
+\begin{center}
+{\Large \textbf{ACKNOWLEDGEMENT}}
+\end{center}
+\vspace{0.8cm}
+
+\noindent We express our heartfelt gratitude and sincere thanks to \textbf{Dr. Karan Veer}, Assistant Professor, Department of Instrumentation and Control Engineering, NIT Jalandhar, for his invaluable guidance, constant encouragement, constructive feedback, and unwavering support throughout the course of this minor project. His technical expertise and insightful suggestions were instrumental in shaping the direction and quality of this work.
+
+\noindent We extend our sincere thanks to the \textbf{Head of the Department of Instrumentation and Control Engineering} and all faculty members for providing the necessary resources, laboratory facilities, and academic environment required for the completion of this project.
+
+\noindent We also acknowledge the support of \textbf{NIT Jalandhar} for providing access to computational resources, high-speed internet, and the campus garden environment used for prototype testing.
+
+\noindent Finally, we are deeply grateful to our \textbf{families and peers} for their moral support and encouragement throughout this academic endeavour.
+
+\vspace{2cm}
+\noindent
+\begin{tabular}{ll}
+Bhavesh Singh      & (23106030) \\
+Chahat Kesharwani  & (23106032) \\
+Sadgi Saraswat     & (23106078) \\
+Vanshika Soni      & (23106099) \\
+\end{tabular}
+
+% =============================================================
+%  ABSTRACT
+% =============================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\begin{center}
+{\Large \textbf{ABSTRACT}}
+\end{center}
+\vspace{0.8cm}
+
+\noindent Agricultural productivity and environmental sustainability are significantly compromised by the indiscriminate and uniform application of chemical pesticides in conventional farming practices. Traditional pesticide spraying systems apply chemicals across entire fields without accounting for the actual health status of individual plants, resulting in excessive pesticide consumption, elevated operational costs, environmental pollution, and long-term degradation of soil and water resources.
+
+\noindent This minor project proposes an \textbf{Intelligent Pesticide Sprinkling System Determined by the Infection Level of Plants}, a precision agriculture solution that optimizes pesticide usage through automated, data-driven decision-making. The proposed system employs computer vision and deep learning techniques to assess plant health by analysing real-time images of tomato leaves using a fine-tuned \textbf{EfficientNetV2-M} model. Based on the detected infection severity, plants are categorized into three levels: Healthy (infection coverage $<$ 30\%), Moderate Infection (30--60\%), and Severe Infection ($>$ 60\%). This classification output is transmitted via Wi-Fi to an \textbf{ESP32} microcontroller, which actuates a 12V DC diaphragm pump and solenoid valve assembly to deliver calibrated pesticide doses proportional to the detected severity.
+
+\noindent The system integrates five functional modules: image capture and preprocessing, ML-based severity detection, decision logic and communication, spraying actuation, and a real-time web monitoring dashboard. The proposed solution is modular, low-cost, and scalable, designed for small-scale and experimental agricultural deployments. By combining intelligent disease detection with automated closed-loop actuation, this project demonstrates a practical application of Artificial Intelligence and IoT in precision agriculture, contributing toward sustainable, efficient, and technology-driven farming.
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Precision Agriculture, Deep Learning, EfficientNetV2, Tomato Leaf Disease Detection, Infection Severity Classification, Automated Pesticide Application, ESP32, IoT, Computer Vision, Transfer Learning.
+
+% =============================================================
+%  TABLE OF CONTENTS
+% =============================================================
+\newpage
+\pagestyle{fancy}
+\tableofcontents
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
+
+% =============================================================
+%  ABBREVIATIONS
+% =============================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+\begin{center}
+{\Large \textbf{LIST OF ABBREVIATIONS}}
+\end{center}
+\vspace{0.5cm}
+
+\begin{tabular}{p{3cm}p{0.5cm}p{9cm}}
+\textbf{AI}    & : & Artificial Intelligence \\
+\textbf{CNN}   & : & Convolutional Neural Network \\
+\textbf{CV}    & : & Computer Vision \\
+\textbf{ESP32} & : & Espressif Systems 32-bit Microcontroller \\
+\textbf{HTTP}  & : & Hypertext Transfer Protocol \\
+\textbf{IoT}   & : & Internet of Things \\
+\textbf{JSON}  & : & JavaScript Object Notation \\
+\textbf{ML}    & : & Machine Learning \\
+\textbf{MOSFET}& : & Metal-Oxide-Semiconductor Field-Effect Transistor \\
+\textbf{NIT}   & : & National Institute of Technology \\
+\textbf{PWM}   & : & Pulse Width Modulation \\
+\textbf{ReLU}  & : & Rectified Linear Unit \\
+\textbf{RGB}   & : & Red-Green-Blue (colour model) \\
+\textbf{TF}    & : & TensorFlow \\
+\textbf{UAV}   & : & Unmanned Aerial Vehicle \\
+\textbf{WHO}   & : & World Health Organization \\
+\textbf{Wi-Fi} & : & Wireless Fidelity \\
+\end{tabular}
+
+% =============================================================
+%  MAIN BODY BEGINS
+% =============================================================
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% =============================================================
+\chapter{INTRODUCTION}
+% =============================================================
+
+\section{Background and Motivation}
+
+Agriculture is the backbone of the Indian economy, employing approximately 58\% of the rural workforce and contributing significantly to national GDP. Ensuring food security for a growing population requires not only high crop yields but also sustainable and resource-efficient farming practices. Among the many challenges faced by the agricultural sector, plant disease management remains one of the most critical and costly problems. Unchecked crop diseases can lead to yield losses ranging from 20\% to 80\%, depending on the crop type and the severity of infection \cite{kumar2025}.
+
+Chemical pesticides have been the primary tool for combating plant diseases and pests for decades. However, conventional pesticide application methods rely on uniform, blanket spraying across entire fields, regardless of the actual health condition of individual plants. This approach is not only wasteful—with research indicating that a significant fraction of applied pesticides never reaches the intended target organisms \cite{lyseng2023}—but also environmentally destructive, leading to soil degradation, groundwater contamination, and harm to beneficial non-target organisms such as pollinators.
+
+Tomato (\textit{Solanum lycopersicum}) is one of the most commercially important and widely cultivated vegetable crops globally. It is highly susceptible to a wide range of fungal, bacterial, and viral diseases, including Early Blight (\textit{Alternaria solani}), Late Blight (\textit{Phytophthora infestans}), Septoria Leaf Spot, and Tomato Yellow Leaf Curl Virus (TYLCV). Without timely and accurate detection and treatment, these diseases can rapidly spread within a field, causing severe economic losses.
+
+Recent breakthroughs in Artificial Intelligence (AI), deep learning-based computer vision, and embedded systems have opened new frontiers in precision agriculture. Machine learning models—particularly Convolutional Neural Networks (CNNs)—have demonstrated remarkable accuracy in identifying plant diseases from digital leaf images. When combined with IoT-enabled actuation systems, these models can form the backbone of intelligent, closed-loop pesticide application systems that spray only where and when it is needed, at the right dosage.
+
+\section{Problem Identification}
+
+Despite advancements in AI and automation, a critical gap persists between research-level plant disease detection and deployable, affordable, severity-aware pesticide control systems. Most existing systems:
+
+\begin{itemize}[leftmargin=2em]
+    \item Detect disease but do not regulate pesticide dosage based on severity.
+    \item Are technologically complex, expensive, or require large-scale infrastructure.
+    \item Are not suitable for small-scale or experimental agricultural deployments.
+    \item Lack real-time feedback loops between disease detection and actuation.
+\end{itemize}
+
+This project directly addresses these gaps by proposing an integrated, low-cost, modular, and intelligent pesticide sprinkling system that classifies infection severity and actuates proportional pesticide delivery in real time.
+
+\section{Project Domain and Type}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Domain:} Precision Agriculture, Artificial Intelligence, Embedded Systems, IoT
+    \item \textbf{Type:} \textit{Interdisciplinary / Design / Experimental}
+    \item \textbf{Sub-domain:} Computer Vision $\cap$ Control Engineering $\cap$ Agricultural Technology
+\end{itemize}
+
+\section{Organization of the Report}
+
+The remainder of this report is organized as follows:
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Chapter 2} presents a comprehensive literature review of related work.
+    \item \textbf{Chapter 3} defines the problem statement and research gap.
+    \item \textbf{Chapter 4} outlines the scope, objectives, and constraints of the project.
+    \item \textbf{Chapter 5} details the proposed methodology and system architecture.
+    \item \textbf{Chapter 6} discusses hardware and software requirements.
+    \item \textbf{Chapter 7} presents expected results and performance metrics.
+    \item \textbf{Chapter 8} covers analysis, discussion, and comparison.
+    \item \textbf{Chapter 9} discusses real-world applications and future scope.
+    \item \textbf{Chapter 10} concludes the report.
+\end{itemize}
+
+% =============================================================
+\chapter{LITERATURE REVIEW}
+% =============================================================
+
+\section{Overview}
+
+This chapter reviews existing research and technologies relevant to plant disease detection, precision agriculture, and automated pesticide application systems. The review is structured to identify the state-of-the-art, highlight key technologies, and pinpoint the gaps that motivate the proposed work.
+
+\section{Pesticide Wastage and Environmental Impact}
+
+Lyseng \cite{lyseng2023} conducted a detailed study on pesticide wastage in conventional farming, reporting that a large percentage of sprayed pesticides do not reach their intended target plants due to wind drift, surface runoff, and evaporation. This leads to significant economic loss for farmers and severe environmental pollution. The study underscores the urgent need for intelligent, targeted pesticide application systems to reduce chemical waste.
+
+Healy et al. \cite{healy2025} investigated the relationship between uncontrolled pesticide usage and deterioration of water quality in agricultural watersheds. Their PestMan project demonstrated that adopting controlled pesticide management strategies can significantly reduce chemical runoff and preserve aquatic ecosystems. However, their work did not integrate real-time plant disease detection or automated spraying mechanisms.
+
+\section{Machine Learning-Based Plant Disease Detection}
+
+Kumar et al. \cite{kumar2025} proposed a deep learning-based ensemble model combining ResNet50 and MobileNetV2 for accurate tomato leaf disease classification. Their model achieved high classification accuracy on benchmark datasets. However, the work was limited to offline disease identification and did not address severity quantification or integration with any pesticide actuation system.
+
+Ibrahim et al. \cite{ibrahim2025} developed an AI-IoT based smart agriculture system for automated plant disease identification and treatment. Their system leveraged convolutional neural networks deployed on cloud servers and integrated IoT sensors for environmental monitoring. While their approach successfully identified diseases, it lacked a proportional pesticide control mechanism—i.e., the quantity of pesticide applied was not regulated based on the \textit{degree} of infection.
+
+\section{Robotic and Automated Spraying Systems}
+
+Pansare et al. \cite{pansare2025} presented a smart agriculture robot capable of detecting plant diseases and triggering pesticide spraying. Their system demonstrated the feasibility of combining disease detection with robotic spraying. However, the system suffered from high cost, mechanical complexity, and did not differentiate pesticide dosage based on infection severity. All infected plants received the same quantity of pesticide regardless of the stage of disease progression.
+
+Ahmed \cite{ahmed2024} proposed an IoT-based intelligent pest management system for precision agriculture, employing smart sensors and IoT-enabled actuators. While the system successfully automated pest detection using environmental sensors, it did not utilize image-based machine learning for visual infection severity analysis, which limits its sensitivity to early-stage and visually identifiable plant infections.
+
+\section{Identified Limitations and Research Gaps}
+
+Table \ref{tab:lit_review} presents a consolidated comparison of related works and the research gaps they leave unaddressed.
+
+\begin{table}[H]
+\centering
+\caption{Summary of Literature Review and Research Gaps}
+\label{tab:lit_review}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|p{3.2cm}|X|X|}
+\hline
+\textbf{Author(s) \& Year} & \textbf{Key Contribution} & \textbf{Research Gap} \\
+\hline
+Lyseng (2023) & Quantified pesticide wastage and environmental impact & No intelligent or automated mechanism to regulate application \\
+\hline
+Pansare et al.\ (2025) & Robotic spraying triggered by disease detection & High cost; severity-based dosing absent \\
+\hline
+Healy et al.\ (2025) & Pesticide management for water quality & No real-time disease detection or automated spraying \\
+\hline
+Ibrahim et al.\ (2025) & AI--IoT disease detection and treatment & No proportional pesticide control based on severity \\
+\hline
+Kumar et al.\ (2025) & Ensemble deep learning for tomato disease classification & Severity estimation and actuation not integrated \\
+\hline
+\end{tabularx}
+\end{table}
+
+\section{Key Technologies Identified}
+
+Based on the literature, the following technologies are central to this domain:
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Convolutional Neural Networks (CNNs)} for image-based feature extraction and classification.
+    \item \textbf{Transfer Learning} using pre-trained models (EfficientNet, ResNet, MobileNet) for improved accuracy with smaller datasets.
+    \item \textbf{IoT and Embedded Systems} (ESP32, Raspberry Pi) for real-time actuation and control.
+    \item \textbf{Computer Vision Libraries} (OpenCV, PIL) for image preprocessing.
+    \item \textbf{HTTP/Wi-Fi Communication} for wireless data transmission between the ML inference unit and the actuation hardware.
+    \item \textbf{Web Dashboards} (Flask, FastAPI) for system monitoring and logging.
+\end{itemize}
+
+% =============================================================
+\chapter{PROBLEM STATEMENT AND RESEARCH GAP}
+% =============================================================
+
+\section{Detailed Problem Statement}
+
+\subsection{What is the Problem?}
+
+Conventional pesticide application in agriculture is fundamentally inefficient. Uniform spraying across entire fields ignores the health status of individual plants, resulting in:
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Over-application on healthy or mildly infected plants}, increasing chemical exposure unnecessarily.
+    \item \textbf{Under-application on severely infected plants}, leading to inadequate disease control.
+    \item \textbf{Delayed treatment} due to reliance on manual inspection, allowing diseases to spread.
+    \item \textbf{High economic burden} on farmers from excessive chemical procurement.
+    \item \textbf{Environmental damage} from pesticide runoff and soil accumulation.
+\end{enumerate}
+
+The core technical problem is the \textbf{absence of a closed-loop, intelligent system} that (a) detects plant infection severity in real time using computer vision and (b) translates that severity assessment into proportionally controlled pesticide delivery.
+
+\subsection{Why is it Important?}
+
+\begin{itemize}[leftmargin=2em]
+    \item India loses approximately 15--25\% of its annual agricultural produce to plant diseases.
+    \item WHO estimates that 3 million cases of pesticide poisoning occur annually worldwide, with 220,000 deaths.
+    \item Excessive pesticide use contributes to biodiversity loss, including bee colony collapse, threatening food chain stability.
+\end{itemize}
+
+\subsection{Who is Affected?}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Small and marginal farmers} who spend disproportionately on pesticides relative to income.
+    \item \textbf{Consumers} exposed to pesticide residues on food.
+    \item \textbf{Ecosystems} impacted by chemical contamination of soil and water.
+    \item \textbf{Agricultural workers} at risk of chronic pesticide exposure.
+\end{itemize}
+
+\subsection{What is the Proposed Solution?}
+
+This project proposes an \textbf{Intelligent Pesticide Sprinkling System} that:
+
+\begin{enumerate}[leftmargin=2em]
+    \item Captures live images of tomato plant leaves using a mounted camera.
+    \item Preprocesses and classifies the images using a fine-tuned EfficientNetV2-M model into severity levels: \textbf{Healthy}, \textbf{Moderate Infection}, and \textbf{Severe Infection}.
+    \item Transmits the severity classification via Wi-Fi to an ESP32 microcontroller.
+    \item Activates a pump-valve-nozzle assembly for a calibrated spray duration proportional to the detected severity.
+    \item Logs all events on a real-time web dashboard for monitoring and analysis.
+\end{enumerate}
+
+\section{Research Gap}
+
+The critical research gap addressed by this project is:
+
+\begin{mdframed}[linewidth=1pt, linecolor=black!70, backgroundcolor=gray!8]
+\textit{No existing affordable, modular, and deployable system simultaneously performs (1) real-time ML-based tomato leaf infection severity classification and (2) proportional, severity-calibrated automated pesticide delivery in a closed-loop control framework suitable for small-scale agricultural use.}
+\end{mdframed}
+
+Specifically, the gap encompasses:
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Severity-proportional actuation:} Existing systems detect disease presence (binary) but do not modulate spray dosage based on the degree of infection.
+    \item \textbf{Integration gap:} ML modules and actuation hardware are rarely integrated in a single, cost-effective, real-time pipeline.
+    \item \textbf{Affordability gap:} Precision agriculture solutions available in literature are typically expensive and not accessible to small-scale farmers or educational institutions.
+    \item \textbf{Scalability gap:} Most prototypes are not designed with modular, scalable architectures that allow expansion to other crops or larger field areas.
+\end{itemize}
+
+% =============================================================
+\chapter{SCOPE AND OBJECTIVES}
+% =============================================================
+
+\section{Scope of the Project}
+
+\subsection{What is Included}
+
+\begin{itemize}[leftmargin=2em]
+    \item Development of an image-based ML classification module for tomato leaf infection severity.
+    \item Design and implementation of an ESP32-based spraying actuation system.
+    \item Integration of a Wi-Fi communication channel between the inference unit and actuator.
+    \item Development of a real-time web monitoring and logging dashboard.
+    \item Testing and validation on a controlled campus garden experimental setup.
+    \item Use of tomato leaf disease datasets from publicly available sources (Kaggle/PlantVillage).
+    \item Use of water mixed with a harmless coloured dye as a pesticide proxy for safe prototype testing.
+\end{itemize}
+
+\subsection{What is Excluded}
+
+\begin{itemize}[leftmargin=2em]
+    \item Full-scale field deployment on commercial agricultural land.
+    \item Disease detection for crops other than tomatoes (reserved for future work).
+    \item Development of a fully autonomous mobile navigation system (manual cart positioning is used).
+    \item Economic impact analysis or full life-cycle cost assessment.
+    \item GPS-based geo-tagging of infected plants.
+\end{itemize}
+
+\subsection{Constraints}
+
+\begin{tabular}{p{3cm}p{10cm}}
+\textbf{Time:} & 6-month project duration (6\textsuperscript{th} semester). \\
+\textbf{Budget:} & Limited to publicly available datasets and low-cost hardware (ESP32, 12V pump, nozzles). \\
+\textbf{Environment:} & Controlled campus garden and laboratory conditions. \\
+\textbf{Dataset:} & Limited to tomato leaf images; model accuracy depends on dataset diversity. \\
+\textbf{Connectivity:} & Requires stable Wi-Fi network for ESP32-laptop communication. \\
+\end{tabular}
+
+\section{Objectives of the Project}
+
+\begin{enumerate}[leftmargin=2em, label=\textbf{O\arabic*.}]
+    \item To develop and train a deep learning model using EfficientNetV2-M architecture via transfer learning for classifying tomato plant infection severity into three categories: \textbf{Healthy}, \textbf{Moderate Infection} (30--60\% leaf coverage), and \textbf{Severe Infection} ($>$ 60\% leaf coverage), achieving a target classification accuracy of $\geq$ 90\% on the validation dataset.
+
+    \item To design an automated, real-time pesticide actuation system using an ESP32 microcontroller that regulates pump activation duration proportionally based on the ML-predicted severity level.
+
+    \item To integrate the ML inference module with the hardware actuation system via a Wi-Fi HTTP communication protocol with a system response latency of $\leq$ 5 seconds from image capture to spray initiation.
+
+    \item To reduce simulated pesticide consumption by at least \textbf{40\%} compared to conventional uniform spraying, as measured during prototype testing on a set of test plants of varying infection levels.
+
+    \item To develop a functional real-time web dashboard that logs plant health status, spray actions, timestamps, and cumulative pesticide usage for remote monitoring.
+
+    \item To demonstrate a modular, scalable, and cost-effective prototype suitable for small-scale and experimental agricultural applications, with total hardware cost maintained below \textbf{Rs. 5,000}.
+\end{enumerate}
+
+% =============================================================
+\chapter{METHODOLOGY}
+% =============================================================
+
+\section{System Overview and Architecture}
+
+The proposed Intelligent Pesticide Sprinkling System follows a modular, five-stage pipeline architecture as illustrated in Figure \ref{fig:block_diagram}. The system operates as a closed-loop control framework where visual inputs drive mechanical outputs through an intelligent decision layer.
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.87\linewidth]{blockdia.png}
+\caption{High-Level System Block Diagram of the Intelligent Pesticide Sprinkling System}
+\label{fig:block_diagram}
+\end{figure}
+
+The five modules are:
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Module 1:} Image Capture \& Preprocessing
+    \item \textbf{Module 2:} ML-Based Infection Severity Detection
+    \item \textbf{Module 3:} Decision Logic \& Communication
+    \item \textbf{Module 4:} Spraying Actuation System
+    \item \textbf{Module 5:} Monitoring \& Logging Dashboard
+\end{enumerate}
+
+\section{Module 1: Image Capture and Preprocessing}
+
+\subsection{Image Acquisition}
+
+A high-resolution USB camera (minimum 5 MP) or Raspberry Pi Camera Module v2 is mounted on a mobile cart at a fixed height and angle relative to the plant canopy. Consistent mounting geometry ensures uniform image framing across all plant specimens. Controlled lighting using LED panels minimizes shadows and glare, improving model inference consistency.
+
+Images are captured in real time as the cart is positioned adjacent to each plant. A trigger mechanism (manual button or proximity sensor) initiates capture.
+
+\subsection{Preprocessing Pipeline}
+
+Captured images undergo the following preprocessing steps before being passed to the ML model:
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Resizing:} Images are resized to $224 \times 224$ pixels to match the EfficientNetV2-M input requirement.
+    \item \textbf{Colour Space Normalisation:} Pixel values are normalized to the range $[0, 1]$ using the ImageNet mean $[\mu_R, \mu_G, \mu_B] = [0.485, 0.456, 0.406]$ and standard deviation $[\sigma_R, \sigma_G, \sigma_B] = [0.229, 0.224, 0.225]$.
+    \item \textbf{Data Augmentation (Training only):} Random horizontal flipping, vertical flipping, rotation ($\pm 20^\circ$), brightness jitter, and zoom augmentation are applied during training to improve model generalization.
+    \item \textbf{Noise Filtering:} A Gaussian blur filter ($\sigma = 0.5$, kernel $3 \times 3$) is applied to reduce sensor noise.
+    \item \textbf{Background Removal (optional):} HSV-based colour thresholding is used to isolate the green leaf region and suppress background interference.
+\end{enumerate}
+
+\section{Module 2: Machine Learning-Based Infection Severity Detection}
+
+\subsection{Model Selection: EfficientNetV2-M}
+
+The EfficientNetV2-M architecture was selected based on the following criteria:
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{State-of-the-art accuracy:} EfficientNetV2 achieves top-1 accuracy of 85.1\% on ImageNet while being significantly faster to train than earlier versions.
+    \item \textbf{Parameter efficiency:} With approximately 54M parameters, it offers a strong accuracy-to-parameter ratio compared to ResNet-101 or VGG-19.
+    \item \textbf{Progressive learning compatibility:} EfficientNetV2 supports progressive image resizing during training, which is beneficial for transfer learning on agricultural datasets.
+\end{itemize}
+
+\subsection{Dataset}
+
+The model is trained on the \textbf{PlantVillage Tomato Leaf Disease Dataset} (publicly available on Kaggle), which contains:
+
+\begin{itemize}[leftmargin=2em]
+    \item Approximately 18,000 annotated tomato leaf images across 10 disease categories.
+    \item Three categories are selected and merged to define the severity levels:
+    \begin{itemize}
+        \item \textbf{Healthy}: Tomato leaf images with no visible disease symptoms.
+        \item \textbf{Moderate Infection}: Early Blight, Septoria Leaf Spot (early-stage lesions, 30--60\% leaf area affected).
+        \item \textbf{Severe Infection}: Late Blight, Bacterial Spot (advanced lesions, $>$ 60\% leaf area affected).
+    \end{itemize}
+\end{itemize}
+
+An 80:10:10 split is used for training, validation, and testing respectively.
+
+\subsection{Transfer Learning Strategy}
+
+\begin{enumerate}[leftmargin=2em]
+    \item Load EfficientNetV2-M with ImageNet pre-trained weights.
+    \item \textbf{Phase 1 — Feature Extraction:} Freeze all convolutional base layers; train only the classification head (Global Average Pooling $\rightarrow$ Dropout(0.3) $\rightarrow$ Dense(256, ReLU) $\rightarrow$ Dense(3, Softmax)) for 15 epochs.
+    \item \textbf{Phase 2 — Fine-Tuning:} Unfreeze the top 30\% of the convolutional base; train end-to-end with a reduced learning rate ($\eta = 1 \times 10^{-5}$) for 20 additional epochs.
+    \item \textbf{Optimizer:} Adam with learning rate scheduling (ReduceLROnPlateau, patience = 3).
+    \item \textbf{Loss Function:} Categorical Cross-Entropy.
+    \item \textbf{Regularization:} L2 weight decay ($\lambda = 1 \times 10^{-4}$) and Dropout (rate = 0.3).
+\end{enumerate}
+
+\subsection{Severity Classification Scheme}
+
+The three-class classification scheme is formally defined as:
+
+\[
+\text{Class} =
+\begin{cases}
+\text{Healthy} & \text{if infection coverage} < 30\% \\
+\text{Moderate Infection} & \text{if } 30\% \leq \text{infection coverage} \leq 60\% \\
+\text{Severe Infection} & \text{if infection coverage} > 60\%
+\end{cases}
+\]
+
+The model outputs a softmax probability vector $\mathbf{p} = [p_0, p_1, p_2]$ for the three classes, and the predicted class is $\hat{y} = \arg\max(\mathbf{p})$.
+
+\subsection{Model Evaluation Metrics}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Accuracy:} Overall fraction of correctly classified samples.
+    \item \textbf{Precision, Recall, F1-Score:} Per-class metrics to evaluate performance on imbalanced subsets.
+    \item \textbf{Confusion Matrix:} To visualize misclassification patterns.
+    \item \textbf{AUC-ROC:} To evaluate class-wise discriminability.
+    \item \textbf{Inference Latency:} Time from image input to classification output ($\leq$ 2 seconds target).
+\end{itemize}
+
+\section{Module 3: Decision Logic and Communication}
+
+\subsection{Severity-to-Spray Mapping}
+
+Upon receiving the ML classification, a decision logic module maps severity levels to calibrated spray parameters:
+
+\begin{table}[H]
+\centering
+\caption{Severity-to-Spray Parameter Mapping}
+\label{tab:spray_mapping}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Severity Level} & \textbf{Spray Duration} & \textbf{Pump Duty Cycle} & \textbf{Action} \\
+\hline
+Healthy & 0 s & 0\% & No spray \\
+Moderate Infection & 3 s & 50\% & Short targeted spray \\
+Severe Infection & 7 s & 100\% & Extended full-pressure spray \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Communication Protocol}
+
+The laptop (running the ML inference server) communicates with the ESP32 via a \textbf{Wi-Fi HTTP REST API}:
+
+\begin{itemize}[leftmargin=2em]
+    \item The ESP32 runs a lightweight HTTP server using the Arduino framework.
+    \item The laptop POSTs a JSON payload to the ESP32's local IP address after each classification.
+    \item JSON command format:
+\end{itemize}
+
+\begin{lstlisting}[language=Python, caption={JSON Command Format for Spray Control}]
+{
+  "plant_id": "P_007",
+  "severity": "moderate",
+  "spray_duration_sec": 3,
+  "timestamp": "2025-04-15T10:32:11"
+}
+\end{lstlisting}
+
+\begin{itemize}[leftmargin=2em]
+    \item The ESP32 parses the JSON, extracts the \texttt{spray\_duration\_sec} field, and drives the MOSFET gate accordingly.
+    \item An HTTP 200 OK response with a status message is returned to the laptop upon successful actuation.
+\end{itemize}
+
+\section{Module 4: Spraying Actuation System}
+
+\subsection{Hardware Components}
+
+\begin{table}[H]
+\centering
+\caption{Hardware Bill of Materials}
+\label{tab:bom}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|p{2cm}|}
+\hline
+\textbf{Component} & \textbf{Specification} & \textbf{Function} & \textbf{Approx. Cost} \\
+\hline
+ESP32 Dev Board & Dual-core 240 MHz, Wi-Fi + BT & Microcontroller \& HTTP server & Rs. 450 \\
+12V DC Diaphragm Pump & 2.4 L/min, max 4 bar & Pressurizes fluid for spraying & Rs. 600 \\
+Solenoid Valve & 12V DC, normally closed & Controls spray on/off & Rs. 300 \\
+Raspberry Pi & Quad-core 1.5 GHz, 2–4GB RAM, Wi-Fi + BT & Image processing, advanced control, server handling & Rs. 6000 \\
+MOSFET (IRF520) & N-channel, 100V/9.2A & Switches 12V loads from 3.3V GPIO & Rs. 50 \\
+Nozzle (Mist type) & 0.3 mm orifice & Produces fine spray droplets & Rs. 80 \\
+USB Camera & 5 MP, USB 2.0 & Image capture & Rs. 700 \\
+12V Li-ion Battery & 3000 mAh & Powers pump and solenoid & Rs. 600 \\
+Mobile Cart & PVC frame & Houses all components & Rs. 500 \\
+Miscellaneous (wires, etc.) & -- & Connections & Rs. 300 \\
+\hline
+\textbf{Total} & & & \textbf{Rs. 9,580} \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Circuit Description}
+
+The ESP32 GPIO output pin drives the gate of the IRF520 MOSFET via a $1\,\text{k}\Omega$ series resistor. The MOSFET drain is connected to the solenoid valve (in series with the pump) and the 12V supply. A \textbf{flyback diode} (1N4007) is placed anti-parallel across the solenoid valve coil to suppress inductive voltage spikes upon de-energisation.
+
+The pump and solenoid valve are activated simultaneously when the ESP32 receives a spray command. Pump pressure builds within 0.5 seconds, and the solenoid valve opens to allow fluid flow to the nozzle. Upon timer expiry, both the pump and valve are de-energised.
+
+\subsection{Safety Mechanisms}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Watchdog timer} on ESP32: If no Wi-Fi command is received within 60 seconds, the system automatically disables the pump.
+    \item \textbf{Hardware limit switch} on cart: Disables spray if cart is in motion (prevents spraying during transit).
+    \item \textbf{Fuse protection:} 2A automotive fuse on the 12V line.
+    \item \textbf{Dry-run protection:} A float sensor in the fluid reservoir disables the pump if fluid level falls below threshold.
+\end{itemize}
+
+\section{Module 5: Monitoring and Logging Dashboard}
+
+A web-based dashboard is developed using \textbf{Python Flask} and \textbf{Chart.js} for data visualization. The dashboard is hosted on the local laptop server and is accessible via any device connected to the same Wi-Fi network.
+
+\subsection{Dashboard Features}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Real-time plant health feed:} Displays the latest captured leaf image with its predicted severity class and confidence score.
+    \item \textbf{Spray event log:} Table of all spray events with plant ID, severity, spray duration, and timestamp.
+    \item \textbf{Cumulative pesticide tracker:} Bar chart showing total spray duration per severity category, updated in real time.
+    \item \textbf{Daily summary:} Pie chart showing the distribution of healthy, moderate, and severe plants inspected each day.
+    \item \textbf{Alert system:} Sends browser notifications if $>$ 3 consecutive plants are classified as severely infected.
+    \item \textbf{Export function:} CSV download of the complete session log for offline analysis.
+\end{itemize}
+
+\section{Complete System Workflow: Step-by-Step}
+
+\begin{algorithm}[H]
+\caption{Intelligent Pesticide Sprinkling System Workflow}
+\label{alg:main_workflow}
+\begin{algorithmic}[1]
+\State \textbf{Initialize:} Load EfficientNetV2-M model, start Flask server, connect ESP32 to Wi-Fi
+\For{each plant in the garden row}
+    \State Position mobile cart adjacent to plant $i$
+    \State Capture leaf image $\mathbf{I}_i$ using USB camera
+    \State Preprocess $\mathbf{I}_i$: resize, normalize, denoise $\rightarrow \hat{\mathbf{I}}_i$
+    \State Pass $\hat{\mathbf{I}}_i$ through EfficientNetV2-M $\rightarrow$ softmax probability vector $\mathbf{p}_i$
+    \State $\hat{y}_i \leftarrow \arg\max(\mathbf{p}_i)$ \Comment{Predicted severity class}
+    \State Map $\hat{y}_i$ to spray duration $t_s$ using Table \ref{tab:spray_mapping}
+    \If{$t_s > 0$}
+        \State Construct JSON payload with $\hat{y}_i$, $t_s$, plant ID, timestamp
+        \State POST JSON to ESP32 HTTP server via Wi-Fi
+        \State ESP32 activates MOSFET $\rightarrow$ pump + solenoid valve ON for $t_s$ seconds
+        \State ESP32 deactivates MOSFET $\rightarrow$ pump + solenoid valve OFF
+    \EndIf
+    \State Log event (plant ID, severity, spray duration, timestamp) to dashboard database
+    \State Update web dashboard with latest data
+\EndFor
+\State Generate session summary report
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.7\linewidth]{connection.png}
+\caption{Circuit Connection Diagram}
+\label{fig:circuit_diagram}
+\end{figure}
+
+
+
+\section{Error Sources and Mitigation Strategies}
+
+\begin{table}[H]
+\centering
+\caption{Error Sources and Mitigation Strategies}
+\label{tab:errors}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Error Source} & \textbf{Impact} & \textbf{Mitigation Strategy} \\
+\hline
+Uneven lighting conditions & Misclassification due to shadows/glare & LED panel lighting; brightness normalisation \\
+Model overfitting & Poor generalization to new plant images & Data augmentation; Dropout; fine-tuning \\
+Wi-Fi packet loss & Missed spray command & HTTP retry mechanism (3 attempts); local fallback mode \\
+Pump pressure variability & Inconsistent spray coverage & Pressure-regulated pump; pre-run calibration \\
+Cart positioning error & Nozzle misaligned with plant & Fixed-position markers on garden path \\
+Dataset imbalance & Bias toward majority class & Class-weighted loss function; oversampling \\
+\hline
+\end{tabularx}
+\end{table}
+
+\section{Tools and Technologies}
+
+\begin{table}[H]
+\centering
+\caption{Tools and Technologies Used}
+\label{tab:tools}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|p{3.5cm}|X|p{3.5cm}|}
+\hline
+\textbf{Tool / Technology} & \textbf{Purpose} & \textbf{Justification} \\
+\hline
+Python 3.10 & ML model development, server backend & Wide library support, rapid prototyping \\
+TensorFlow 2.13 / Keras & EfficientNetV2-M training and inference & Native EfficientNet support, GPU acceleration \\
+OpenCV 4.8 & Image capture, preprocessing, augmentation & Industry-standard CV library \\
+Flask 3.0 & HTTP server for decision logic and dashboard & Lightweight, easy REST API development \\
+Arduino IDE / C++ & ESP32 firmware development & Official ESP32 support, low-level hardware control \\
+ArduinoJSON library & JSON parsing on ESP32 & Efficient JSON handling on microcontrollers \\
+Chart.js & Dashboard data visualization & Lightweight, browser-based charting \\
+SQLite & Logging database & Embedded, no server required \\
+Kaggle PlantVillage & Training dataset & Publicly available, well-annotated \\
+Jupyter Notebook & Model training and analysis & Interactive, reproducible ML workflow \\
+\hline
+\end{tabularx}
+\end{table}
+
+% =============================================================
+\chapter{HARDWARE AND SOFTWARE REQUIREMENTS}
+% =============================================================
+
+\section{Hardware Requirements}
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Processing Unit:} Laptop or PC with minimum Intel i5 (8th Gen) or equivalent, 8 GB RAM, GPU (optional, for faster training — NVIDIA GTX 1650 or higher recommended).
+    \item \textbf{Microcontroller:} ESP32 DevKitC v4 (dual-core Xtensa LX6, 240 MHz, 4 MB Flash, 520 KB SRAM).
+    \item \textbf{Camera:} Logitech C920 USB Webcam (1080p) or Pi Camera Module v2 (8 MP).
+    \item \textbf{Pump:} 12V DC Mini Diaphragm Water Pump (2.4 L/min, max 5 bar).
+    \item \textbf{Solenoid Valve:} 12V DC Normally Closed Solenoid Valve (3/8 inch NPT).
+    \item \textbf{MOSFET Driver Circuit:} IRF520 N-channel MOSFET with heatsink, 1N4007 flyback diode.
+    \item \textbf{Power Supply:} 12V/5A DC adapter (bench testing); 12V LiPo battery pack (field testing).
+    \item \textbf{Mobile Cart:} Custom PVC-pipe frame cart with adjustable camera mount.
+\end{enumerate}
+
+\section{Software Requirements}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Operating System:} Windows 10/11 or Ubuntu 20.04 LTS.
+    \item \textbf{Python:} Version 3.10+ with pip package manager.
+    \item \textbf{Libraries:} TensorFlow 2.13, Keras, OpenCV-Python 4.8, NumPy 1.24, Pandas 2.0, Pillow 10.0, Flask 3.0, Matplotlib, Scikit-learn 1.3, SQLite3.
+    \item \textbf{IDE:} Visual Studio Code with Python extension; Arduino IDE 2.x.
+    \item \textbf{ESP32 Board Package:} esp32 by Espressif (via Arduino Board Manager, version 2.x).
+    \item \textbf{ESP32 Libraries:} WiFi.h, WebServer.h, ArduinoJSON 6.x.
+    \item \textbf{Dataset:} PlantVillage Tomato Leaf Disease Dataset (Kaggle).
+\end{itemize}
+
+% =============================================================
+\chapter{EXPECTED RESULTS}
+% =============================================================
+
+\section{Expected Model Performance}
+
+Based on the characteristics of the EfficientNetV2-M architecture and the PlantVillage dataset, the following classification performance is anticipated:
+
+\begin{table}[H]
+\centering
+\caption{Expected Model Performance Metrics}
+\label{tab:expected_perf}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\
+\hline
+Healthy & 0.93 & 0.95 & 0.94 & 360 \\
+Moderate Infection & 0.89 & 0.87 & 0.88 & 360 \\
+Severe Infection & 0.91 & 0.92 & 0.91 & 360 \\
+\hline
+\textbf{Overall Accuracy} & \multicolumn{4}{c|}{\textbf{$\geq$ 90\%}} \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Expected System-Level Performance}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{End-to-end latency} (image capture to spray initiation): $\leq 5$ seconds.
+    \item \textbf{Pesticide savings}: $\geq 40\%$ reduction in total spray volume compared to uniform spraying on the same set of test plants.
+    \item \textbf{Spray accuracy}: Nozzle coverage diameter of 15--20 cm at 30 cm distance, sufficient to cover individual tomato plant canopies.
+    \item \textbf{System uptime}: Continuous operation for $\geq 2$ hours per battery charge during field testing.
+    \item \textbf{Dashboard data refresh rate}: $\leq 2$ seconds per event.
+\end{itemize}
+
+\section{Expected Pesticide Reduction Analysis}
+
+For a test scenario with 10 plants in the following distribution:
+
+\begin{table}[H]
+\centering
+\caption{Expected Pesticide Reduction: Uniform vs. Intelligent Spraying}
+\label{tab:pesticide_reduction}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Plant Distribution} & \textbf{Count} & \textbf{Uniform Spray (s)} & \textbf{Intelligent Spray (s)} & \textbf{Saving} \\
+\hline
+Healthy & 4 & $4 \times 7 = 28$ & $4 \times 0 = 0$ & 28 s \\
+Moderate Infection & 3 & $3 \times 7 = 21$ & $3 \times 3 = 9$ & 12 s \\
+Severe Infection & 3 & $3 \times 7 = 21$ & $3 \times 7 = 21$ & 0 s \\
+\hline
+\textbf{Total} & 10 & \textbf{70 s} & \textbf{30 s} & \textbf{40 s (57\%)} \\
+\hline
+\end{tabular}
+\end{table}
+
+This demonstrates a theoretical pesticide reduction of up to \textbf{57\%} for a typical mixed-health plant population.
+
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=0.87\linewidth]{output.png}
+\caption{Sample Output}
+\label{fig:sample_output}
+\end{figure}
+
+% =============================================================
+\chapter{ANALYSIS AND DISCUSSION}
+% =============================================================
+
+\section{Expected Performance Trends}
+
+\subsection{Model Training Behaviour}
+
+During the two-phase transfer learning process, the following trends are anticipated:
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Phase 1} (frozen base): Rapid convergence within 5--7 epochs. Validation accuracy is expected to reach approximately 82--85\%.
+    \item \textbf{Phase 2} (fine-tuned): Gradual but consistent improvement in validation accuracy to $\geq 90\%$. Loss reduction slows significantly after epoch 10 of Phase 2, indicating convergence.
+    \item \textbf{Overfitting risk} is mitigated by Dropout and data augmentation; the training-validation accuracy gap is expected to remain below 3\%.
+\end{itemize}
+
+\subsection{Classification Difficulty Analysis}
+
+The most challenging classification boundary is expected to be between \textbf{Moderate} and \textbf{Severe Infection} classes, as the visual difference between 50\% and 65\% leaf area affected is subtle. This is a known challenge in severity-based leaf classification and is addressed through fine-grained augmentation and class-weighted loss.
+
+\section{Improvements Over Existing Systems}
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Severity-proportional pesticide delivery} is the primary novel contribution—no comparable low-cost system in the reviewed literature implements this feature.
+    \item \textbf{End-to-end integration} of ML inference, Wi-Fi communication, hardware actuation, and real-time dashboard in a single deployable prototype is a significant practical advancement.
+    \item \textbf{Cost-effectiveness}: The proposed prototype costs under Rs. 5,000, compared to robotic systems in the literature that cost several thousands of US dollars.
+    \item \textbf{Modular design} allows independent testing, upgrade, and replacement of each module without affecting the rest of the system.
+    \item \textbf{Dashboard logging} provides actionable insights for farmers and researchers, which is absent in most comparable systems.
+\end{enumerate}
+
+\section{Comparison with Existing Systems}
+
+\begin{table}[H]
+\centering
+\caption{Comparison of Proposed System with Related Work}
+\label{tab:comparison}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{|X|c|c|c|c|c|}
+\hline
+\textbf{System} & \textbf{Severity-Based Dosing} & \textbf{Real-Time} & \textbf{Low Cost} & \textbf{Dashboard} & \textbf{Crop} \\
+\hline
+Pansare et al.\ (2025) & \ding{55} & \ding{51} & \ding{55} & \ding{55} & Multiple \\
+Ibrahim et al.\ (2025) & \ding{55} & \ding{51} & \ding{55} & \ding{55} & Multiple \\
+Ahmed (2024) & \ding{55} & \ding{51} & \ding{51} & \ding{55} & Multiple \\
+Kumar et al.\ (2025) & \ding{55} & \ding{55} & \ding{51} & \ding{55} & Tomato \\
+\textbf{Proposed System} & \ding{51} & \ding{51} & \ding{51} & \ding{51} & Tomato \\
+\hline
+\end{tabularx}
+\end{table}
+
+\section{Limitations and Mitigations}
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Single-crop focus:} The current model is trained only on tomato leaf images. Mitigation: The architecture is designed to be easily re-trained on other crop datasets.
+    \item \textbf{Cart navigation is manual:} Full autonomy requires path planning, which is beyond the scope of this project. Future work will integrate an Arduino-based line-following system.
+    \item \textbf{Dataset quality dependency:} Model performance degrades in field conditions where lighting is significantly different from training data. Mitigation: Adaptive histogram equalisation during preprocessing.
+\end{itemize}
+
+% =============================================================
+\chapter{APPLICATIONS}
+% =============================================================
+
+\section{Real-World Use Cases}
+
+\subsection{Small and Marginal Farms}
+
+The primary target application is small and marginal farms (land holding $<$ 2 hectares), which constitute over 86\% of Indian farm households. A low-cost, manually guided cart system is appropriate for such farms where investment in large-scale robotics is not feasible. The intelligent spraying module can directly reduce pesticide expenditure by 40--60\% for these farmers.
+
+\subsection{Greenhouse and Polyhouse Horticulture}
+
+In controlled greenhouse environments, the system can be deployed on an overhead rail track, enabling fully automated scanning and spraying of tomato rows. The controlled lighting in greenhouses further improves ML model accuracy. The dashboard's remote monitoring capability is particularly valuable in greenhouse settings.
+
+\subsection{Agricultural Research Stations and Universities}
+
+The system provides a replicable, low-cost experimental platform for studying the relationship between disease severity, pesticide dosage, and crop recovery rates. Research institutions can use the logging dashboard to collect longitudinal data on infection spread and treatment efficacy.
+
+\subsection{Extension to Other High-Value Crops}
+
+The system architecture is directly applicable to other disease-prone high-value crops including chilli peppers, brinjal, and cucumbers. Retraining the EfficientNetV2-M model on crop-specific datasets is the only modification required.
+
+
+% =============================================================
+\chapter{FUTURE SCOPE}
+% =============================================================
+
+\section{Possible Improvements}
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Autonomous Mobile Navigation:} Integrating a line-following or LiDAR-based navigation system on the cart to enable fully autonomous row-by-row plant scanning without human intervention.
+
+    \item \textbf{Multi-Crop Disease Detection:} Expanding the ML model to detect diseases across multiple crop types (e.g., wheat, rice, chilli) by fine-tuning on a multi-class, multi-crop dataset.
+
+    \item \textbf{Continuous On-Plant Monitoring:} Deploying fixed cameras at plant positions (similar to a greenhouse sensor network) to enable continuous health monitoring and proactive intervention before diseases spread.
+
+    \item \textbf{Edge AI Deployment:} Porting the EfficientNetV2-M model to \textbf{TensorFlow Lite} format and deploying it directly on the ESP32-S3 (which has a built-in AI accelerator) to eliminate the Wi-Fi communication dependency and enable fully embedded real-time inference.
+
+    \item \textbf{Fertiliser Dosage Optimisation:} Extending the system to regulate fertiliser application based on plant growth stage detection, creating a comprehensive crop input management platform.
+
+    \item \textbf{IoT Cloud Integration:} Connecting the dashboard to cloud platforms (AWS IoT Core, Google Cloud IoT) for remote monitoring, predictive analytics, and fleet management of multiple deployed carts.
+
+    \item \textbf{Explainable AI (XAI) Integration:} Incorporating Grad-CAM visualisation to overlay the model's attention heatmap on the leaf image, enabling farmers to visually understand which leaf regions drove the disease severity prediction.
+
+    \item \textbf{Solar Power Integration:} Replacing the battery with a solar panel and charge controller to enable deployment in remote agricultural areas without grid power access.
+\end{enumerate}
+
+% =============================================================
+\chapter{CONCLUSION}
+% =============================================================
+
+This minor project presents the design and development of an \textbf{Intelligent Pesticide Sprinkling System Determined by the Infection Level of Plants}—a precision agriculture solution that integrates deep learning-based computer vision with IoT-enabled hardware actuation to address the longstanding problem of indiscriminate and wasteful pesticide application in conventional farming.
+
+The proposed system employs the \textbf{EfficientNetV2-M} deep learning architecture, fine-tuned via transfer learning on the PlantVillage tomato leaf disease dataset, to classify plant infection severity in real time into three categories: Healthy, Moderate Infection, and Severe Infection. This classification drives a calibrated pesticide spraying response delivered through a 12V DC pump, solenoid valve, and nozzle assembly controlled by an \textbf{ESP32} microcontroller via a Wi-Fi HTTP communication interface. A real-time web dashboard provides continuous monitoring, event logging, and cumulative pesticide consumption tracking.
+
+The key contributions of this project are:
+\begin{enumerate}[leftmargin=2em]
+    \item A \textbf{severity-proportional, closed-loop pesticide control system}—a feature absent in comparable low-cost precision agriculture systems.
+    \item An \textbf{end-to-end integrated prototype} combining ML inference, wireless communication, hardware actuation, and dashboard monitoring.
+    \item A \textbf{cost-effective design} (under Rs. 5,000) that is accessible to small-scale farmers and educational institutions.
+    \item A \textbf{modular architecture} that supports straightforward extension to other crops, larger scales, and additional sensing modalities.
+\end{enumerate}
+
+The project is expected to achieve a classification accuracy of $\geq$ 90\%, an end-to-end system latency of $\leq 5$ seconds, and a pesticide consumption reduction of up to \textbf{57\%} compared to uniform spraying for a representative mixed-health plant population. These outcomes collectively demonstrate the practical viability of AI-driven precision agriculture at the grassroots level.
+
+% =============================================================
+%  REFERENCES
+% =============================================================
+\newpage
+\begin{thebibliography}{99}
+
+\bibitem{lyseng2023}
+R. Lyseng, ``Pesticide waste assigned a number,'' \textit{The Western Producer}, 16 March 2023.
+
+\bibitem{pansare2025}
+V. Pansare, A. Kulkarni, and R. Patil, ``Smart agriculture robot for plant disease detection and spraying,'' \textit{International Journal of Scientific Research in Science, Engineering and Technology (IJSRSET)}, vol. 12, no. 3, pp. 45--52, May--June 2025.
+
+\bibitem{healy2025}
+M. G. Healy, P. Johnston, and L. O'Connor, ``PestMan: Pesticide management for better water quality,'' \textit{EPA Research Report}, Report No. 480, 2025.
+
+\bibitem{ibrahim2025}
+A. S. Ibrahim, M. El-Sayed, and H. Farouk, ``AI--IoT based smart agriculture pivot for plant disease detection and treatment,'' \textit{Scientific Reports}, vol. 15, Article no. 16576, 2025.
+
+\bibitem{kumar2025}
+S. Kumar, R. Verma, and P. Singh, ``Deep learning-based ensemble model for accurate tomato leaf disease classification using ResNet50 and MobileNetV2,'' \textit{Scientific Reports}, vol. 15, 2025.
+
+\bibitem{ahmed2024}
+S. Ahmed, ``IoT-based intelligent pest management system for precision agriculture,'' \textit{Scientific Reports}, vol. 14, Article no. 31917, 2024.
+
+\bibitem{tan2021}
+M. Tan and Q. Le, ``EfficientNetV2: Smaller models and faster training,'' in \textit{Proceedings of the 38th International Conference on Machine Learning (ICML)}, 2021, pp. 10096--10106.
+
+\bibitem{hughes2015}
+D. P. Hughes and M. Salathé, ``An open access repository of images on plant health to enable the development of mobile disease diagnostics,'' \textit{arXiv preprint arXiv:1511.08060}, 2015.
+
+\bibitem{mohanty2016}
+S. P. Mohanty, D. P. Hughes, and M. Salathé, ``Using deep learning for image-based plant disease detection,'' \textit{Frontiers in Plant Science}, vol. 7, Article 1419, 2016.
+
+\bibitem{ferentinos2018}
+K. P. Ferentinos, ``Deep learning models for plant disease detection and diagnosis,'' \textit{Computers and Electronics in Agriculture}, vol. 145, pp. 311--318, 2018.
+
+\bibitem{lecun2015}
+Y. LeCun, Y. Bengio, and G. Hinton, ``Deep learning,'' \textit{Nature}, vol. 521, pp. 436--444, 2015.
+
+\bibitem{goodfellow2016}
+I. Goodfellow, Y. Bengio, and A. Courville, \textit{Deep Learning}. MIT Press, Cambridge, MA, 2016.
+
+\end{thebibliography}
+
+% =============================================================
+%  APPENDICES
+% =============================================================
+\appendix
+
+\chapter{ESP32 Firmware Code (Core Functions)}
+
+\begin{lstlisting}[language=C++, caption={ESP32 Wi-Fi HTTP Server and Spray Control Firmware}]
+#include <WiFi.h>
+#include <WebServer.h>
+#include <ArduinoJson.h>
+
+// ---- Configuration ----
+const char* ssid     = "YOUR_WIFI_SSID";
+const char* password = "YOUR_WIFI_PASSWORD";
+const int PUMP_PIN   = 26;   // GPIO connected to MOSFET gate
+const int LED_PIN    = 2;    // Onboard LED for status
+
+WebServer server(80);
+
+// ---- Spray Handler ----
+void handleSpray() {
+  if (!server.hasArg("plain")) {
+    server.send(400, "application/json", "{\"error\":\"No body\"}");
+    return;
+  }
+  String body = server.arg("plain");
+  StaticJsonDocument<256> doc;
+  DeserializationError err = deserializeJson(doc, body);
+  if (err) {
+    server.send(400, "application/json", "{\"error\":\"JSON parse failed\"}");
+    return;
+  }
+  int duration = doc["spray_duration_sec"] | 0;  // default 0 if missing
+  if (duration > 0 && duration <= 10) {
+    digitalWrite(LED_PIN, HIGH);
+    digitalWrite(PUMP_PIN, HIGH);   // Activate pump + solenoid
+    delay(duration * 1000UL);      // Hold for spray_duration_sec
+    digitalWrite(PUMP_PIN, LOW);    // Deactivate
+    digitalWrite(LED_PIN, LOW);
+  }
+  server.send(200, "application/json", "{\"status\":\"ok\"}");
+}
+
+// ---- Setup ----
+void setup() {
+  Serial.begin(115200);
+  pinMode(PUMP_PIN, OUTPUT);
+  pinMode(LED_PIN,  OUTPUT);
+  digitalWrite(PUMP_PIN, LOW);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print("."); }
+  Serial.println("\nConnected! IP: " + WiFi.localIP().toString());
+  server.on("/spray", HTTP_POST, handleSpray);
+  server.begin();
+}
+
+// ---- Loop ----
+void loop() {
+  server.handleClient();
+}
+\end{lstlisting}
+
+\chapter{Python ML Inference and HTTP Client (Core Functions)}
+
+\begin{lstlisting}[language=Python, caption={Python Script for ML Inference and ESP32 Communication}]
+import cv2
+import numpy as np
+import tensorflow as tf
+import requests
+import json
+from datetime import datetime
+
+# ---- Configuration ----
+MODEL_PATH    = "efficientnetv2_m_tomato.h5"
+ESP32_IP      = "192.168.1.105"
+ESP32_PORT    = 80
+CLASS_NAMES   = ["healthy", "moderate", "severe"]
+SPRAY_DURATIONS = {"healthy": 0, "moderate": 3, "severe": 7}
+
+# ---- Load Model ----
+model = tf.keras.models.load_model(MODEL_PATH)
+IMG_SIZE = (224, 224)
+MEAN = np.array([0.485, 0.456, 0.406])
+STD  = np.array([0.229, 0.224, 0.225])
+
+def preprocess(frame):
+    img = cv2.resize(frame, IMG_SIZE)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = img.astype(np.float32) / 255.0
+    img = (img - MEAN) / STD
+    return np.expand_dims(img, axis=0)
+
+def classify(frame):
+    inp  = preprocess(frame)
+    prob = model.predict(inp, verbose=0)[0]
+    idx  = int(np.argmax(prob))
+    return CLASS_NAMES[idx], float(prob[idx])
+
+def send_spray_command(plant_id, severity, duration):
+    payload = {
+        "plant_id": plant_id,
+        "severity": severity,
+        "spray_duration_sec": duration,
+        "timestamp": datetime.now().isoformat()
+    }
+    url = f"http://{ESP32_IP}:{ESP32_PORT}/spray"
+    try:
+        resp = requests.post(url, json=payload, timeout=5)
+        return resp.status_code == 200
+    except requests.RequestException as e:
+        print(f"[ERROR] ESP32 communication failed: {e}")
+        return False
+
+# ---- Main Loop ----
+cap = cv2.VideoCapture(0)
+plant_counter = 0
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+    if cv2.waitKey(1) & 0xFF == ord('c'):   # 'c' to capture
+        plant_counter += 1
+        plant_id = f"P_{plant_counter:03d}"
+        severity, confidence = classify(frame)
+        duration = SPRAY_DURATIONS[severity]
+        print(f"[{plant_id}] Severity: {severity} ({confidence:.1%}), Spray: {duration}s")
+        if duration > 0:
+            ok = send_spray_command(plant_id, severity, duration)
+            print(f"  ESP32 Response: {'OK' if ok else 'FAILED'}")
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+\end{lstlisting}
+
+\end{document}
