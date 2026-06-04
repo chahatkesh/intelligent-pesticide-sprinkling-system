@@ -1,0 +1,596 @@
+% ============================================================
+%  A0 Portrait Academic Poster — beamerposter layout
+%  Smart Pesticide Control System Driven by Plant Infection Analysis
+%  NIT Jalandhar  ·  Minor Project Phase-II
+%  Compile: pdflatex poster.tex
+% ============================================================
+\documentclass[final,t]{beamer}
+\usepackage[orientation=portrait,size=custom,width=84.1,height=118.9,scale=1.2]{beamerposter}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc}
+
+% ── Colours ──────────────────────────────────────────────────────────────────
+\definecolor{HeaderBG}{HTML}{1B5E20}
+\definecolor{AccentGreen}{HTML}{2E7D32}
+\definecolor{AccentRed}{HTML}{C62828}
+\definecolor{AccentYellow}{HTML}{F9A825}
+\definecolor{AccentBlue}{HTML}{1565C0}
+\definecolor{AccentOrange}{HTML}{E65100}
+\definecolor{SectionBG}{HTML}{E8F5E9}
+\definecolor{BoxBorder}{HTML}{2E7D32}
+\definecolor{LightGray}{HTML}{F5F5F5}
+\definecolor{DarkText}{HTML}{212121}
+\definecolor{GreenGood}{HTML}{2E7D32}
+\definecolor{RedBad}{HTML}{C62828}
+\definecolor{GreenMid}{HTML}{81C784}
+
+% ── Beamer theme overrides ───────────────────────────────────────────────────
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamerfont{block title}{size=\large,series=\bfseries}
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.3em,
+  label={\color{AccentGreen}\scalebox{1.1}{$\bullet$}}}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=0.3em,
+  label={\color{AccentBlue}\bfseries\arabic*.}}
+\setlength{\parskip}{0.5em}
+
+% ── Poster box style ────────────────────────────────────────────────────────
+\newtcolorbox{posterbox}[1][]{%
+  colback=white,
+  colframe=BoxBorder,
+  boxrule=1.2pt,
+  arc=4pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\large\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=AccentGreen,
+  #1
+}
+
+\newtcolorbox{resultbox}[1][]{%
+  colback=SectionBG,
+  colframe=BoxBorder!60,
+  boxrule=0.8pt,
+  arc=3pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt,
+  #1
+}
+
+% ── Highlight commands ──────────────────────────────────────────────────────
+\newcommand{\hlnum}[1]{\textbf{\textcolor{AccentGreen}{#1}}}
+\newcommand{\hlbad}[1]{\textbf{\textcolor{RedBad}{#1}}}
+\newcommand{\hlgood}[1]{\textbf{\textcolor{GreenGood}{#1}}}
+
+\setlength{\beamer@leftmargin}{1cm}
+\setlength{\beamer@rightmargin}{1cm}
+
+\begin{document}
+\begin{frame}[t]{}
+
+% ════════════════════════════════════════════════════════════════════════════
+% HEADER
+% ════════════════════════════════════════════════════════════════════════════
+\begin{tcolorbox}[
+  enhanced,
+  colback=HeaderBG,
+  colframe=HeaderBG,
+  boxrule=0pt,
+  arc=0pt,
+  left=20pt, right=20pt, top=18pt, bottom=18pt,
+  width=\textwidth,
+  borderline south={4pt}{0pt}{AccentGreen},
+  borderline north={2pt}{0pt}{GreenMid},
+  interior style={top color=HeaderBG, bottom color=HeaderBG!85!black}
+]
+\begin{columns}[c]
+
+% ── NITJ logo (left) ─────────────────────────────────────────
+\begin{column}{0.14\textwidth}
+  \centering
+  \begin{tcolorbox}[
+    colback=white, colframe=white,
+    arc=8pt, boxrule=0pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    width=\linewidth, halign=center
+  ]
+    \includegraphics[width=0.95\linewidth, keepaspectratio]{nitj.png}
+  \end{tcolorbox}
+\end{column}
+
+% ── Title / Authors (center) ─────────────────────────────────
+\begin{column}{0.72\textwidth}
+  \centering
+  % Small top tag-line
+  {\footnotesize\color{GreenMid}\textbf{%
+    \textsc{Department of Instrumentation \& Control Engineering}\,%
+    \enspace$\bullet$\enspace
+    \textsc{Minor Project Phase-II}\,%
+    \enspace$\bullet$\enspace
+    \textsc{2023--2027}\par}}
+  \vspace{6pt}
+
+  % Main title
+  {\fontsize{58}{66}\selectfont\bfseries\color{white}%
+    Smart Pesticide Control System\par}
+  \vspace{4pt}
+  {\fontsize{40}{48}\selectfont\bfseries\color{white!92}%
+    Driven by Plant Infection Analysis\par}
+
+  \vspace{10pt}
+  % Thin divider rule
+  {\color{GreenMid}\rule{0.55\textwidth}{1.2pt}\par}
+  \vspace{8pt}
+
+  % Subtitle
+  {\fontsize{22}{26}\selectfont\itshape\color{GreenMid}%
+    AI-IoT Based Severity-Aware Pesticide Spraying for Sustainable Agriculture\par}
+
+  \vspace{14pt}
+
+  % Authors
+  {\normalsize\color{white}%
+    \textbf{Bhavesh Singh}\,\textcolor{GreenMid}{\scriptsize (23106030)}
+    \enspace$\cdot$\enspace
+    \textbf{Chahat Kesharwani}\,\textcolor{GreenMid}{\scriptsize (23106032)}
+    \enspace$\cdot$\enspace
+    \textbf{Sadgi Saraswat}\,\textcolor{GreenMid}{\scriptsize (23106078)}
+    \enspace$\cdot$\enspace
+    \textbf{Vanshika Soni}\,\textcolor{GreenMid}{\scriptsize (23106099)}\par}
+  \vspace{8pt}
+
+  % Supervisor + Institute
+  {\small\color{white!85}%
+    \textbf{Supervisor:}~Dr.~Karan Veer
+    \enspace$|$\enspace
+    Dr.~B.~R.~Ambedkar National Institute of Technology Jalandhar\par}
+\end{column}
+
+% ── Right spacer (keeps logo on left, centered title block) ──
+\begin{column}{0.14\textwidth}
+  \centering
+  {\color{GreenMid}\fontsize{72}{72}\selectfont\bfseries
+    \textcolor{white!10}{2026}}
+\end{column}
+
+\end{columns}
+\end{tcolorbox}
+
+\vspace{0.6cm}
+
+% ════════════════════════════════════════════════════════════════════════════
+% BODY — Two-column layout
+% ════════════════════════════════════════════════════════════════════════════
+\begin{columns}[T]
+
+% ────────────────────────────────────────────────────────────────────────────
+% LEFT COLUMN
+% ────────────────────────────────────────────────────────────────────────────
+\begin{column}{0.48\textwidth}
+
+% ── 1. MOTIVATION & PROBLEM ───────────────────────────────────
+\begin{posterbox}[title=1~~Motivation \& Problem Statement]
+\justifying
+Agriculture still relies on \textbf{uniform pesticide spraying}---chemicals applied
+across the field without considering individual plant health, leading to
+\textbf{chemical wastage}, increased cost, soil contamination, and unnecessary
+exposure of healthy plants.
+
+\vspace{0.3em}
+\begin{resultbox}
+\centering\large
+\textit{``How can we spray pesticide only where needed\\
+and in proportion to disease severity?''}
+\end{resultbox}
+\vspace{0.3em}
+
+\textbf{Core challenge:} Build a closed-loop system connecting image-based
+severity detection with proportional pesticide actuation.
+
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[font=\footnotesize, x=1pt, y=1pt]
+  \node[draw=RedBad, fill=RedBad!6, rounded corners=6pt,
+        text width=200pt, align=center, minimum height=46pt,
+        line width=1.5pt] (A) at (0,0)
+    {\normalsize\bfseries Conventional\\[2pt]
+     \footnotesize Same dose for all};
+  \node[draw=AccentGreen, fill=SectionBG, rounded corners=6pt,
+        text width=200pt, align=center, minimum height=46pt,
+        line width=1.5pt] (B) at (320,0)
+    {\normalsize\bfseries Smart Spraying\\[2pt]
+     \footnotesize Dose\;$\propto$\;severity};
+  \draw[-{Stealth[length=6pt,width=5pt]}, line width=2pt, AccentGreen]
+    (A.east) -- (B.west)
+    node[midway, above=3pt, font=\footnotesize\bfseries, text=AccentGreen]
+    {AI-Driven};
+\end{tikzpicture}
+\end{center}
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── 2. RESEARCH GAP ──────────────────────────────────────────
+\begin{posterbox}[title=2~~Research Gap]
+\justifying
+Most existing systems handle detection and spraying \textit{separately}:
+
+\vspace{0.3em}
+\begin{itemize}
+  \item ML systems detect disease but \textbf{do not control spray quantity}
+  \item Robotic sprayers are costly and not severity-aware
+  \item Binary infected/not-infected decisions are insufficient
+  \item No affordable system links \textbf{detection with proportional actuation}
+\end{itemize}
+
+\vspace{0.3em}
+\begin{resultbox}
+\renewcommand{\arraystretch}{1.3}
+\centering
+\begin{tabular}{p{0.38\linewidth}p{0.54\linewidth}}
+\toprule
+\textbf{Existing Direction} & \textbf{Limitation} \\
+\midrule
+ML disease detection & Stops at classification \\
+Robotic sprayers & Expensive, not severity-aware \\
+AI-IoT farming & Limited proportional control \\
+\textbf{Our system} & \hlgood{Detection + proportional actuation} \\
+\bottomrule
+\end{tabular}
+\end{resultbox}
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── 3. OBJECTIVES ────────────────────────────────────────────
+\begin{posterbox}[title=3~~Objectives, colbacktitle=AccentBlue]
+\justifying
+\begin{enumerate}
+  \item Capture tomato leaf images using ESP32-CAM module
+  \item Classify infection severity: \textit{Healthy\,/\,Moderate\,/\,Severe}
+  \item Map severity to calibrated pump actuation duration
+  \item Implement microcontroller-based pump control
+  \item Display infection status via RGB LED and 7-segment display
+  \item Reduce pesticide usage vs.\ conventional uniform spraying
+  \item Build a low-cost, working prototype for academic use
+\end{enumerate}
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── 4. SYSTEM ARCHITECTURE ───────────────────────────────────
+\begin{posterbox}[title=4~~System Architecture]
+\justifying
+The system forms a \textbf{closed-loop pipeline} from plant image
+acquisition to physical spray actuation:
+
+\vspace{0.5em}
+\begin{center}
+\begin{tikzpicture}[
+    x=1pt, y=1pt,
+    sysbox/.style={draw, rounded corners=6pt,
+      minimum width=260pt, minimum height=54pt,
+      align=center, line width=1.6pt,
+      font=\normalsize\bfseries,
+      inner sep=5pt},
+    arr/.style={-{Stealth[length=8pt,width=7pt]},
+      line width=2.2pt, AccentGreen, shorten <=2pt, shorten >=2pt},
+    tag/.style={font=\footnotesize\bfseries, text=white,
+      fill=#1, rounded corners=4pt,
+      inner xsep=7pt, inner ysep=4pt,
+      minimum width=80pt, align=center}
+  ]
+
+  \node[sysbox, fill=AccentGreen!10, draw=AccentGreen] (plant) at (0,0)
+    {Plant / Tomato Leaf};
+  \node[sysbox, fill=AccentGreen!10, draw=AccentGreen] (cam) at (0,-95)
+    {Image Capture\\[1pt]{\footnotesize\mdseries ESP32-CAM}};
+  \node[sysbox, fill=AccentGreen!10, draw=AccentGreen] (prep) at (0,-190)
+    {Preprocessing\\[1pt]{\footnotesize\mdseries Resize\,\textperiodcentered\,Normalise}};
+  \node[sysbox, fill=AccentBlue!10, draw=AccentBlue] (ml) at (0,-285)
+    {ML Severity Detection\\[1pt]{\footnotesize\mdseries EfficientNetV2 / CNN}};
+  \node[sysbox, fill=AccentOrange!10, draw=AccentOrange!80!black] (dec) at (0,-380)
+    {Decision Logic\\[1pt]{\footnotesize\mdseries Severity\,$\to$\,Duration}};
+  \node[sysbox, fill=RedBad!8, draw=RedBad] (mcu) at (0,-475)
+    {Microcontroller\\[1pt]{\footnotesize\mdseries Arduino UNO}};
+  \node[sysbox, fill=RedBad!8, draw=RedBad] (pump) at (0,-570)
+    {Pump / Nozzle\\[1pt]{\footnotesize\mdseries DC Submersible Pump}};
+
+  \node[draw=DarkText!40, fill=white, rounded corners=5pt,
+        minimum width=150pt, minimum height=54pt, align=center,
+        line width=1.4pt, font=\normalsize\bfseries,
+        inner sep=5pt]
+    (log) at (260,-380) {Dashboard\\[1pt]{\footnotesize\mdseries \& Logging}};
+
+  \foreach \a/\b in {plant/cam,cam/prep,prep/ml,ml/dec,dec/mcu,mcu/pump}
+    \draw[arr] (\a) -- (\b);
+  \draw[arr, DarkText!50, densely dashed] (dec.east) -- (log.west);
+
+  \node[tag=AccentGreen]           at (-220,-95)  {SENSING};
+  \node[tag=AccentBlue]            at (-220,-285) {AI\,/\,ML};
+  \node[tag=AccentOrange!80!black] at (-220,-380) {CONTROL};
+  \node[tag=RedBad]                at (-220,-522) {ACTUATE};
+\end{tikzpicture}
+\end{center}
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── 5. DECISION LOGIC ────────────────────────────────────────
+\begin{posterbox}[title=5~~Decision Logic]
+\justifying
+The decision layer converts predicted infection severity into pump ON time,
+making the system \textbf{severity-aware} rather than spraying all plants equally.
+
+\vspace{0.4em}
+\begin{resultbox}
+\renewcommand{\arraystretch}{1.25}
+\centering
+\begin{tabular}{l l l c}
+\toprule
+\textbf{Infection} & \textbf{Class} & \textbf{Action} & \textbf{Duration} \\
+\midrule
+\rowcolor{SectionBG}
+Low ($<$30\%) &
+  \textcolor{GreenGood}{\textbf{Healthy}} &
+  No spray & \textbf{0\,s} \\
+Medium (30--60\%) &
+  \textcolor{AccentYellow!50!black}{\textbf{Moderate}} &
+  Short spray & \textbf{3\,s} \\
+\rowcolor{RedBad!6}
+High ($>$60\%) &
+  \textcolor{RedBad}{\textbf{Severe}} &
+  Extended spray & \textbf{7\,s} \\
+\bottomrule
+\end{tabular}
+\end{resultbox}
+
+\vspace{0.4em}
+\begin{center}
+\begin{tikzpicture}[x=1pt, y=1pt, font=\normalsize]
+  \node[fill=AccentGreen, text=white, rounded corners=6pt,
+        minimum width=110pt, minimum height=38pt, align=center,
+        font=\normalsize\bfseries] (h) at (0,0)
+    {Healthy\\[-2pt]{\small 0\,sec}};
+  \node[fill=AccentYellow, text=white, rounded corners=6pt,
+        minimum width=110pt, minimum height=38pt, align=center,
+        font=\normalsize\bfseries] (m) at (180,0)
+    {Moderate\\[-2pt]{\small 3\,sec}};
+  \node[fill=RedBad, text=white, rounded corners=6pt,
+        minimum width=110pt, minimum height=38pt, align=center,
+        font=\normalsize\bfseries] (s) at (360,0)
+    {Severe\\[-2pt]{\small 7\,sec}};
+\end{tikzpicture}
+\end{center}
+\end{posterbox}
+
+\end{column}
+
+% ────────────────────────────────────────────────────────────────────────────
+% RIGHT COLUMN
+% ────────────────────────────────────────────────────────────────────────────
+\begin{column}{0.48\textwidth}
+
+% ── 6. PROTOTYPE ─────────────────────────────────────────────
+\begin{posterbox}[title=6~~Prototype Implementation]
+\justifying
+A working prototype demonstrates the complete closed-loop pipeline
+from image capture to pump actuation.
+
+\vspace{0.4em}
+\begin{resultbox}
+\renewcommand{\arraystretch}{1.25}
+\centering
+\begin{tabular}{p{0.32\linewidth}p{0.58\linewidth}}
+\toprule
+\textbf{Component} & \textbf{Role} \\
+\midrule
+\rowcolor{SectionBG}
+ESP32-CAM & Captures leaf image \\
+Arduino UNO & Control logic \& hardware interface \\
+\rowcolor{SectionBG}
+RGB LED & Infection severity indicator \\
+7-Segment Display & Shows infection percentage \\
+\rowcolor{SectionBG}
+L298N Motor Driver & Drives the DC pump \\
+DC Submersible Pump & Pesticide spraying actuation \\
+\bottomrule
+\end{tabular}
+\end{resultbox}
+
+\vspace{0.6em}
+\textbf{Hardware Signal Flow:}
+\vspace{0.6em}
+
+\begin{center}
+\begin{tikzpicture}[
+    x=1pt, y=1pt,
+    cmp/.style={draw, rounded corners=6pt,
+      minimum width=190pt, minimum height=58pt,
+      align=center, line width=1.6pt,
+      font=\normalsize\bfseries,
+      inner sep=5pt},
+    side/.style={draw, rounded corners=6pt,
+      minimum width=170pt, minimum height=58pt,
+      align=center, line width=1.6pt,
+      font=\normalsize\bfseries,
+      inner sep=5pt},
+    flowarr/.style={-{Stealth[length=8pt,width=7pt]},
+      line width=2pt, shorten <=2pt, shorten >=2pt},
+    tag/.style={font=\footnotesize\bfseries, text=white,
+      fill=#1, rounded corners=4pt,
+      inner xsep=7pt, inner ysep=4pt,
+      minimum width=85pt, align=center}
+  ]
+
+  % Main vertical pipeline (centered at x=0)
+  \node[cmp, fill=AccentGreen!12, draw=AccentGreen] (cam) at (0,0)
+    {ESP32-CAM\\[1pt]{\footnotesize\mdseries Image Capture}};
+  \node[cmp, fill=AccentBlue!10, draw=AccentBlue] (ard) at (0,-105)
+    {Arduino UNO\\[1pt]{\footnotesize\mdseries Control Logic}};
+  \node[cmp, fill=AccentOrange!10, draw=AccentOrange!80!black] (drv) at (0,-210)
+    {L298N Driver\\[1pt]{\footnotesize\mdseries Motor Control}};
+  \node[cmp, fill=RedBad!8, draw=RedBad] (pmp) at (0,-315)
+    {DC Pump\\[1pt]{\footnotesize\mdseries Pesticide Spray}};
+
+  % Side indicators (visual feedback) - properly spaced, no overlap
+  \node[side, fill=SectionBG, draw=AccentGreen] (disp) at (260,-50)
+    {7-Seg Display\\[1pt]{\footnotesize\mdseries Infection \%}};
+  \node[side, fill=AccentYellow!15, draw=AccentYellow!80!black] (led) at (260,-160)
+    {RGB LED\\[1pt]{\footnotesize\mdseries Severity Indicator}};
+
+  % Vertical flow arrows (main pipeline)
+  \foreach \a/\b in {cam/ard, ard/drv, drv/pmp}
+    \draw[flowarr, AccentGreen] (\a) -- (\b);
+
+  % Side branches from Arduino - clean L-shaped routing
+  \draw[flowarr, AccentBlue]
+    (ard.east) -- ++(35,0) |- (disp.west);
+  \draw[flowarr, AccentYellow!70!black]
+    (ard.east) -- ++(35,0) |- (led.west);
+
+  % Left-side stage tags (horizontal, like architecture diagram)
+  \node[tag=AccentGreen]            at (-175, 0)    {INPUT};
+  \node[tag=AccentBlue]             at (-175,-105)  {CONTROL};
+  \node[tag=AccentOrange!80!black]  at (-175,-210)  {DRIVE};
+  \node[tag=RedBad]                 at (-175,-315)  {ACTUATE};
+
+  % Feedback group label on right (above the side boxes)
+  \node[font=\footnotesize\bfseries, text=AccentOrange!80!black,
+        anchor=center] at (260, 35)
+    {VISUAL FEEDBACK};
+  \draw[AccentOrange!50!black, line width=0.8pt]
+    (260-90, 22) -- (260+90, 22);
+\end{tikzpicture}
+\end{center}
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── 7. EXPECTED PERFORMANCE ──────────────────────────────────
+\begin{posterbox}[title=7~~Expected Performance \& Pesticide Saving]
+\justifying
+
+\begin{resultbox}
+\renewcommand{\arraystretch}{1.25}
+\centering
+\begin{tabular}{l c}
+\toprule
+\textbf{Metric} & \textbf{Target} \\
+\midrule
+\rowcolor{SectionBG}
+Classification accuracy & $\geq 90\%$ \\
+End-to-end latency & $\leq 5$\,s \\
+\rowcolor{SectionBG}
+Pesticide reduction & $\geq 40\%$ \\
+Theoretical saving (mixed case) & $\approx 57\%$ \\
+\bottomrule
+\end{tabular}
+\end{resultbox}
+
+\vspace{0.3em}
+\textbf{Pesticide Reduction Analysis} (sample 10-plant mixed-health test):
+
+\vspace{0.3em}
+\begin{resultbox}
+\renewcommand{\arraystretch}{1.2}
+\centering
+\begin{tabular}{l c c c c}
+\toprule
+\textbf{Type} & \textbf{Count} & \textbf{Uniform} & \textbf{Smart} & \textbf{Saving} \\
+\midrule
+Healthy  & 4 & 28\,s & \hlgood{0\,s}  & 28\,s \\
+Moderate & 3 & 21\,s & 9\,s           & 12\,s \\
+Severe   & 3 & 21\,s & 21\,s          & 0\,s  \\
+\midrule
+\textbf{Total} & \textbf{10} & \textbf{70\,s} & \hlgood{\textbf{30\,s}} & \hlgood{\textbf{40\,s}} \\
+\bottomrule
+\end{tabular}
+\end{resultbox}
+
+\vspace{0.3em}
+Smart spraying reduces total spray time from \hlbad{70\,s} to
+\hlgood{30\,s}---a \hlgood{$\approx$57\% reduction} in pesticide use.
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── 8. APPLICATIONS & FUTURE SCOPE ──────────────────────────
+\begin{posterbox}[title=8~~Applications \& Future Scope, colbacktitle=AccentBlue]
+\begin{minipage}[t]{0.47\linewidth}
+  {\large\bfseries\color{AccentGreen}Applications}
+  \begin{itemize}[itemsep=4pt]
+    \item Small \& marginal farms
+    \item Greenhouses \& polyhouses
+    \item Agricultural research stations
+    \item Precision agriculture
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\linewidth}
+  {\large\bfseries\color{AccentBlue}Future Scope}
+  \begin{itemize}[itemsep=4pt]
+    \item Multi-crop support
+    \item Autonomous robot cart
+    \item Cloud dashboard \& mobile app
+    \item Edge AI inference
+  \end{itemize}
+\end{minipage}
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── 9. CONCLUSION ────────────────────────────────────────────
+\begin{posterbox}[title=9~~Conclusion, colbacktitle=HeaderBG]
+\justifying
+\begin{itemize}
+  \item Integrates \textbf{computer vision, ML, and embedded control} for severity-aware pesticide spraying
+  \item Healthy plants receive \textbf{zero spray}; dose scales proportionally with infection severity
+  \item Prototype validates the closed-loop pipeline: \textbf{detection $\to$ decision $\to$ actuation}
+  \item Achieves theoretical \hlgood{$\approx$57\% pesticide reduction} vs.\ uniform spraying
+\end{itemize}
+
+\vspace{0.4em}
+\begin{resultbox}
+\centering\large
+\textbf{Spray only where needed, in proportion to severity.}\\[3pt]
+AI + IoT for sustainable precision agriculture.
+\end{resultbox}
+\end{posterbox}
+
+\vspace{0.4cm}
+
+% ── FOOTER: KEYWORDS & REFERENCES ────────────────────────────
+\begin{posterbox}[title=Keywords \& References]
+{\normalsize
+\textbf{Keywords:}\enspace
+Precision Agriculture\;$\cdot$\;AI\;$\cdot$\;IoT\;$\cdot$\;%
+Computer Vision\;$\cdot$\;ESP32-CAM\;$\cdot$\;Arduino\;$\cdot$\;%
+EfficientNetV2\;$\cdot$\;Smart Spraying\;$\cdot$\;%
+Tomato Leaf Disease\par}
+
+\vspace{0.3em}
+{\small
+\textbf{References:}\enspace
+[1]\,PlantVillage dataset, Kaggle.\enspace
+[2]\,Tan \& Le, EfficientNetV2, ICML 2021.\enspace
+[3]\,IoT precision agriculture, MDPI Sensors.\enspace
+[4]\,CNN leaf disease detection, IEEE Access.\par}
+\end{posterbox}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+\end{document}

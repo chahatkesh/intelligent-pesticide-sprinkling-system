@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/logo_250.png" width="110" alt="NIT Jalandhar"/>
+<img src="docs/images/logo_250.png" width="110" alt="NIT Jalandhar"/>
 
 # Intelligent Pesticide Sprinkling System
 
@@ -23,16 +23,24 @@ An IoT and AI system that detects tomato-leaf infection severity and sprays pest
 
 ## Team
 
-> **Dr. B. R. Ambedkar NIT Jalandhar** · Department of Instrumentation & Control Engineering · B.Tech 2025–26
+> **Dr. B. R. Ambedkar NIT Jalandhar** • Department of Instrumentation & Control Engineering • B.Tech 2023–27
 
-| Member | Roll No. |
-|--------|----------|
-| Bhavesh Singh | 23106030 |
+| Member            | Roll No. |
+| ----------------- | -------- |
+| Bhavesh Singh     | 23106030 |
 | Chahat Kesharwani | 23106032 |
-| Sadgi Saraswat | 23106078 |
-| Vanshika Soni | 23106099 |
+| Sadgi Saraswat    | 23106078 |
+| Vanshika Soni     | 23106099 |
 
 **Supervisor:** Dr. Karan Veer, Assistant Professor
+
+<div align="center">
+
+<img src="docs/images/team.png" width="520" alt="Team presenting the Smart Pesticide Control System project and poster"/>
+
+<sub>The team presenting the project and poster at the Minor Project Phase-II evaluation, NIT Jalandhar.</sub>
+
+</div>
 
 ## About the Project
 
